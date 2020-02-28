@@ -1,0 +1,183 @@
+<html>
+     <head>
+        <meta charset="UTF-8">
+        <title>Manipulando a DOM</title>
+     </head>
+  <body>
+    <div id="app">
+        <input type="text" name="nome" class="nome" id="nome">
+        <button onClick="adicionar()">Adicionar</button>
+        </div>
+    </div>
+
+
+    <script>
+        /*
+        var elemInput = document.querySelector('input[name=nome]');
+        var elemButton = document.querySelector('button.botao');
+            elemButton.onclick = function mostrarAlerta(){
+                //alert("Botão pressionado!!");
+                var text = elemInput.value;
+
+                alert(text);
+            }
+        
+
+        var linkElemt = document.createElement('a')
+            linkElemt.setAttribute('href','http://www.google.com');
+            linkElemt.setAttribute('title','buscador');
+        
+        var text = document.createTextNode('Acessar');
+        linkElemt.appendChild(text);
+
+        var containerElement = document.querySelector('#app');
+            containerElement.appendChild(linkElemt);
+        
+        var inputElem = document.querySelector('#nome');
+        containerElement.removeChild(inputElem);
+            
+
+            //css
+        var boxElemt = document.querySelector('.box');
+
+            boxElemt.style.width = 100;
+            boxElemt.style.height = 100;
+            boxElemt.style.backgroundColor = "#f00";
+            
+        
+
+    //modulo 1°
+
+            //primeira questão
+            var corpo = document.querySelector('#app');
+            var div = document.createElement('div');
+            corpo.appendChild(div);
+
+            var botao = document.createElement('button');
+
+            div.appendChild(botao);
+
+            var tabela = document.createElement('table');
+            div.appendChild(tabela);
+
+            
+            
+
+            botao.onclick = function Quadrado(){
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                var divs = document.createElement('div');
+                divs.style.width = 100;
+                divs.style.height = 100;
+                divs.style.background = '#FF0000';
+                
+                tabela.appendChild(tr);
+                tr.appendChild(td);
+                td.appendChild(divs);
+            
+            }
+            
+            
+            //segunda questão
+
+            var corpo = document.querySelector('#app');
+            var div = document.createElement('div');
+            corpo.appendChild(div);//coloca a div dentro da outra div de id=app
+
+            var botao = document.createElement('button');//crio um elemento do tipo botão(button)
+
+            div.appendChild(botao);//coloco o botão criado dentro da segunda div
+
+            var tabela = document.createElement('table');//crio uma tabela
+            div.appendChild(tabela);//coloco a tabela dentro da segunda div
+
+            function getRandomColor() {  //função que cria geração de cores aleatorias em hexadecimal
+                    var letters = "0123456789ABCDEF";  
+                    var color = "#";  
+                    for (var i = 0; i < 6; i++) {    
+                        color += letters[Math.floor(Math.random() * 16)];  
+                        }  
+                        return color;
+                    }
+            
+            
+                    
+                //função que cria um novo quadrado 100px por 100px inicialmente todos vermelhos, clicando no botão
+            botao.onclick = function Quadrado(){
+                var tr = document.createElement('tr');//cria um elemento na DOM do tipo linha(tr)
+                var td = document.createElement('td');//cria um elemento na DOM do tipo celula(td)
+                var divs = document.createElement('div');//cria uma div 
+                    divs.setAttribute('id','quadrados');//coloca o id de cada quadrado
+                divs.style.width = 100;
+                divs.style.height = 100;
+                divs.style.background = '#ff0000';//cor inicial de cada quadrado da div
+                divs.onmouseover = function mudarCor(){//função que faz mudar a cor do quadrado se o mouse passa por cima dele
+                    divs.style.background = getRandomColor();//chama a funcão e trocar a cor do fundo
+                }
+                
+                tabela.appendChild(tr);//coloca a linha dentro da tabela
+                tr.appendChild(td);//coloca a célula na linha
+                td.appendChild(divs);//coloca uma div(quadado) na linha e celula
+            
+            }
+            
+            
+            
+            //teste com um quadrado para que ele mude de cor.(sucessido)
+
+            var corpo = document.querySelector('#app');
+            var boxElemt = document.createElement('div');
+                boxElemt.setAttribute('id','box');
+            corpo.appendChild(boxElemt);
+
+            boxElemt.style.width = 100;
+            boxElemt.style.height = 100;
+            boxElemt.style.backgroundColor = "#f00";
+
+            function getRandomColor() {  
+                var letters = "0123456789ABCDEF";  
+                var color = "#";  
+                for (var i = 0; i < 6; i++) {    
+                    color += letters[Math.floor(Math.random() * 16)];  
+                    }  
+                return color;
+                }
+            
+            boxElemt.onmouseover = function teste(){
+                boxElemt.style.background = getRandomColor();
+            }
+            */
+
+
+            //terceira questão
+            var corpo = document.querySelector('#app');//procuro o local onde colocar a lista
+            var nomes = ['Daniel','Gabriel','Lucas'];//vetor com os nomes
+
+            var lista = document.createElement('ul');//crio a lista
+                lista.setAttribute('id','nomes');//crio um atributo para a lista
+                
+                corpo.appendChild(lista);//informo que a lista está dentro do corpo ou seja, da div app
+                
+                function exibirNomes(vetor){
+                for(var nome of vetor){
+                    
+                    var itens = document.createElement('li');//crio um item a cada nome valor contido no array
+                        itens.innerHTML = nome;
+                        lista.appendChild(itens);//informo que o item está contido dentro da lista nomes
+                         
+                    
+                     }
+                }
+                exibirNomes(nomes);
+
+                function adicionar(){
+                    var buscar = document.getElementById('nome');
+                    var itens = document.createElement('li');//crio um item a cada nome valor contido no array
+                        itens.innerHTML = buscar.value;
+                        lista.appendChild(itens);//informo que o item está contido dentro da lista nomes 
+                        document.getElementById('nome').value="";    
+                }
+
+    </script>
+    </body>
+</html>
